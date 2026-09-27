@@ -8,7 +8,8 @@ export const SubmitButton = () => {
     const handleSubmit = async () => {
         try {
             console.log("Submitting pipeline...", { nodes, edges });
-            const response = await fetch('http://127.0.0.1:8000/pipelines/parse', {
+            const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000';
+            const response = await fetch(`${backendUrl}/pipelines/parse`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
